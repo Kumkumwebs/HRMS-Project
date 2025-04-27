@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% block title %}My Leave Summary{% endblock %}
+
+{% block content %}
+<h2>📝 My Leave Summary</h2>
+
+{% if leave_requests %}
+<table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+    </tr>
+    {% for leave in leave_requests %}
+    <tr>
+        <td>{{ leave.start_date }}</td>
+        <td>{{ leave.end_date }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>
+            {% if leave.status == "Approved" %}
+                ✅ {{ leave.status }}
+            {% elif leave.status == "Rejected" %}
+                ❌ {{ leave.status }}
+            {% else %}
+                ⏳ {{ leave.status }}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>You haven't requested any leave yet.</p>
+{% endif %}
+{% endblock %}

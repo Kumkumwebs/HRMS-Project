@@ -1,0 +1,390 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav {
+    background-color: #c73255;
+    padding: 12px 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 10px;
+    transition: all 0.3s ease;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+nav a:hover {
+    background-color: #b27d22c3;
+    transform: scale(1.05);
+}
+
+nav a.active {
+    background-color: #1abc9c;
+    color: white;
+    font-weight: 700;
+    border-bottom: 3px solid white;
+}
+
+/* General Button Styles */
+button,
+.btn {
+    background-color: #c73255;
+    /* Same as navbar for consistency */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #b22244;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #1abc9c;
+}
+
+.btn-secondary:hover {
+    background-color: #159d82;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: #16a085;
+    text-decoration: underline;
+}
+
+/* Hover Effect for Buttons */
+.btn-primary,
+.btn-secondary {
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature Cards - Add Subtle Animation */
+.feature-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile-Friendly Layout */
+@media (max-width: 1024px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        width: 80%;
+    }
+}
+
+/* Tablet View */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        font-size: 1em;
+        padding: 10px 16px;
+    }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .feature-card {
+        width: 90%;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 8px 14px;
+    }
+}
+
+/* home page style  */
+.home-page-style {
+    height: 100vh;
+    background-image: url("/static/core/images/banner_main.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.home-bg-shadow {
+    width: 700px;
+    margin: 0 auto;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 30%;
+
+}
+
+.display-home-heading {
+    font-size: 63px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* end  */
+
+/* hr page style  */
+.hrlogin-page-style {
+    height: 100vh;
+    background-image: url(/static/core/images/hr_login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+
+.hrlogin-bg-shadow {
+    width: 500px;
+    margin: 0 auto;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 25%;
+}
+
+input[type=text],
+input[type=password],
+input[type=date] {
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: none;
+}
+
+.login-label label {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=date]:focus {
+    background-color: lightblue;
+    outline: none;
+}
+textarea {
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* end  */
+
+/* employee login style  */
+
+.employeelogin-page-style {
+    height: 100vh;
+    background-image: url("/static/core/images/emp_login.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+
+.employeelogin-bg-shadow {
+    width: 500px;
+    margin: 0 auto;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 25%;
+}
+
+/* end  */
+
+/* dashboard page style  */
+
+.wrapper {
+    background: #fff;
+}
+
+.wrapper .header-dashboard {
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+
+.header-dashboard .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+
+.header-dashboard .icons span {
+    padding: 10px;
+    color: #c73255;
+    font-size: 1.5rem;
+    margin: 0 1px;
+    font-weight: 800;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.header-dashboard .icons span:hover {
+    background: #b27d22c3;
+    color: #fff;
+
+}
+
+.header-dashboard .icons span:last-child {
+    margin-right: -10px;
+}
+
+.calendar {
+    padding: 20px;
+}
+
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.calendar .weeks li {
+    font-weight: bold;
+}
+
+.calendar .days {
+    margin-bottom: 30px;
+}
+
+.calendar .days li {
+    margin-top: 30px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active {
+    color: #fff;
+}
+
+.calendar ul li {
+    position: relative;
+    width: calc(100% / 7)
+}
+
+.calendar .days li::before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.days li:hover::before {
+    background: #f2f2f2;
+    color: #000;
+}
+
+.days li.active::before {
+    background: #c73255;
+    color: #000;
+}
+
+
+/* leave request style  */
+
+.leaverequest-page-style {
+    height: 100vh;
+    background-image: url("/static/core/images/leave_request3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+
+.leaverequest-bg-shadow {
+    width: 500px;
+    margin: 0 auto;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 5%;
+}
+

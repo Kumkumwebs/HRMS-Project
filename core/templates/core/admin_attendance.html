@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% block title %}Admin Attendance View{% endblock %}
+
+{% block content %}
+<h2>🧑‍💼 Attendance Records (Admin)</h2>
+
+<form method="GET">
+    <label for="date">Filter by Date:</label>
+    <input type="date" name="date" value="{{ filter_date }}">
+    <button type="submit">Filter</button>
+</form>
+
+<br>
+
+{% if records %}
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Date</th>
+            <th>Employee</th>
+            <th>Status</th>
+        </tr>
+        {% for rec in records %}
+        <tr>
+            <td>{{ rec.date }}</td>
+            <td>{{ rec.employee.username }}</td>
+            <td>
+                {% if rec.status == "Present" %}
+                    <span style="color:green;">{{ rec.status }}</span>
+                {% else %}
+                    <span style="color:red;">{{ rec.status }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No attendance records found.</p>
+{% endif %}
+
+{% endblock %}

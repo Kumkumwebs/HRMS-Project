@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- Background Container -->
+ 
+<div class="container-fluid home-page-style">
+    <div class="bg-dark bg-opacity-75 text-white p-5 rounded text-center shadow-lg home-bg-shadow">
+        <h1 class="display-home-heading text-warning mb-4 animate__animated animate__fadeInDown">Welcome to HR_MS</h1>
+        <blockquote class="blockquote mt-4">
+            <p class="mb-0 fs-3" id="quote">"The only way to do great work is to love what you do." – Steve Jobs
+            </p>
+        </blockquote>
+    </div>
+</div>
+
+<style>
+    header{
+        position: fixed;
+        width: 100%;
+        top: 0%;
+        z-index: 99;
+    }
+</style>
+
+<!-- Bootstrap + Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<!-- Quote Rotator Script -->
+<script>
+    const quotes = [
+        `"The only way to do great work is to love what you do." – Steve Jobs`,
+        `"Success is not the key to happiness. Happiness is the key to success." – Albert Schweitzer`,
+        `"Don’t watch the clock; do what it does. Keep going." – Sam Levenson`,
+        `"Strive not to be a success, but rather to be of value." – Albert Einstein`,
+        `"Believe you can and you're halfway there." – Theodore Roosevelt`,
+        `"Your time is limited, so don't waste it living someone else's life." – Steve Jobs`
+    ];
+
+    let index = 0;
+    const quoteElement = document.getElementById("quote");
+
+    setInterval(() => {
+        index = (index + 1) % quotes.length;
+        quoteElement.classList.remove("animate__fadeInUp");
+        void quoteElement.offsetWidth; // trigger reflow
+        quoteElement.textContent = quotes[index];
+        quoteElement.classList.add("animate__fadeInUp");
+    }, 5000); // Change quote every 5 seconds
+</script>
+{% endblock %}

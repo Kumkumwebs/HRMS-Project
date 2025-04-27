@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+
+{% block title %}Leave Request{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid leaverequest-page-style">
+    <div class="bg-dark bg-opacity-75 text-white px-5 py-3 rounded shadow-lg leaverequest-bg-shadow">
+        <div class="text-center border-bottom border-warning mb-3">
+            <h2 class="pb-2">Submit Leave Request</h2>
+        </div>
+        <form class="" method="post">
+            {% csrf_token %}
+            <div class="login-name">
+                <div class="login-label">  <label for="start_date">Start Date:</label></div>
+                <div class="leave-start-date">  <input type="date" name="start_date" required></div>
+            </div>
+            <div class="">
+                <div class="login-label"><label for="end_date">End Date:</label></div>
+                <div class=""> <input type="date" name="end_date" required></div>
+            </div>
+            <div class="">
+                <div class="login-label"><label for="reason">Reason:</label></div>
+                <div class=""> <textarea name="reason" rows="4" cols="40" required></textarea></div>
+            </div>
+
+            <div class="text-end pt-2">
+                <button class="rounded-pill px-4" type="submit">Submit Request</button>
+            </div>
+        </form>
+
+        {% if message %}
+        <div class="text-center pt-4">
+            <h5 style="color:red; font-size: 17px;">{{ message }}</h5>
+        </div>
+
+        
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    /* header {
+        position: fixed;
+        width: 100%;
+        top: 0%;
+        z-index: 99;
+    } */
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if message %}
+    <p style="color: green;">{{ message }}</p>
+{% endif %}
+{% endblock %}

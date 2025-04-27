@@ -1,0 +1,111 @@
+{% extends "core/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row py-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="border border-2 h-100 text-center p-3">
+                <img class="w-50" src="https://assets.codepen.io/495197/undraw_Newsletter_re_wrob.svg" alt="">
+                <h2>Name: {{ user.username }}</h2>
+                <p>You are logged in as {{ user.groups.all.0.name }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+
+            <div class="wrapper border border-2">
+                <div class="header-dashboard">
+                    <p class="current-date">
+
+                    </p>
+                    <div class="icons">
+                        <span id="prevIcon" class="leftIcon"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                              </svg>
+                        </span>
+                                <span id="nextIcon" class="rightIcon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                      </svg>
+                                </span>
+                    </div>
+                </div>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Sunday</li>
+                        <li>Monday</li>
+                        <li>Teusday</li>
+                        <li>Wednesday</li>
+                        <li>Thursday</li>
+                        <li>Friday</li>
+                        <li>Saturday</li>
+                    </ul>
+                    <ul class="days">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const currentDateTitle = document.querySelector(".current-date"),
+        daysTag = document.querySelector(".days"),
+        prevNextIcons = document.querySelectorAll(".icons span");
+
+    let date = new Date(),
+        currentYear = date.getFullYear(),
+        currentMonth = date.getMonth();
+
+    /** tradução nisso aqui **/
+    const months = ["Janauray", "Febaury", "March", "April", "May", "June", "July", "August", "September", "Ouctober", "November", "December"];
+
+    const renderCalendar = () => {
+        let firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+        let lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        let lastDayOfMonth = new Date(currentYear, currentMonth, lastDateOfMonth).getDay();
+        let lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate();
+        let liDayTag = "";
+
+        for (let i = firstDayOfMonth; i > 0; i--) {
+            liDayTag += `<li class="inactive">${lastDateOfLastMonth - i + 1}</li>`;
+        }
+
+        for (let i = 1; i <= lastDateOfMonth; i++) {
+            let isToday = i === date.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear() ? 'class="active"' : '';
+            liDayTag += `<li ${isToday}>${i}</li>`;
+        }
+
+        for (let i = lastDayOfMonth; i < 6; i++) {
+            liDayTag += `<li class="inactive">${i - lastDayOfMonth + 1}</li>`;
+        }
+
+        currentDateTitle.innerText = `${months[currentMonth]} ${currentYear}`;
+        daysTag.innerHTML = liDayTag;
+    }
+
+
+    renderCalendar();
+
+    prevNextIcons.forEach(icon => {
+        icon.addEventListener("click", () => {
+            currentMonth = icon.id === "prevIcon" ? currentMonth - 1 : currentMonth + 1;
+
+            if (currentMonth < 0 || currentMonth > 11) {
+                date = new Date(currentYear, currentMonth);
+                currentYear = date.getFullYear();
+                currentMonth = date.getMonth();
+                return;
+            } else {
+                date = new Date();
+            }
+
+            renderCalendar();
+        });
+    });
+</script>
+
+{% endblock %}

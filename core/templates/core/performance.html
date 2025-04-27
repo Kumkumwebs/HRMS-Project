@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% block title %}My Performance{% endblock %}
+
+{% block content %}
+<h2>📈 My Performance Reviews</h2>
+
+{% if performance_data %}
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Date</th>
+            <th>Score</th>
+            <th>Remarks</th>
+        </tr>
+        {% for p in performance_data %}
+        <tr>
+            <td>{{ p.date }}</td>
+            <td>{{ p.score }}</td>
+            <td>{{ p.remarks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No performance records found.</p>
+{% endif %}
+{% endblock %}
