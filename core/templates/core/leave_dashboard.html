@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+
+{% block title %}Leave Request Dashboard{% endblock %}
+
+{% block content %}
+<h2>Leave Request Dashboard</h2>
+
+<h3>Status Summary:</h3>
+<ul>
+    <li>✅ Approved: {{ count_approved }}</li>
+    <li>❌ Rejected: {{ count_rejected }}</li>
+    <li>🕒 Pending: {{ count_pending }}</li>
+    <li>📊 Total: {{ total }}</li>
+</ul>
+
+<hr>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Employee</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Submitted On</th>
+    </tr>
+    {% for req in leave_requests %}
+    <tr>
+        <td>{{ req.employee.username }}</td>
+        <td>{{ req.start_date }}</td>
+        <td>{{ req.end_date }}</td>
+        <td>{{ req.reason }}</td>
+        <td>
+            {% if req.status == "Approved" %}
+                <span style="color:green;"><strong>{{ req.status }}</strong></span>
+            {% elif req.status == "Rejected" %}
+                <span style="color:red;"><strong>{{ req.status }}</strong></span>
+            {% else %}
+                <span style="color:orange;"><strong>{{ req.status }}</strong></span>
+            {% endif %}
+        </td>
+        <td>{{ req.date|date:"d M Y" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if leave_requests|length == 0 %}
+    <p>No leave requests found.</p>
+{% endif %}
+{% endblock %}

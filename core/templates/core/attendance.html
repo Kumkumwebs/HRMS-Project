@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% block title %}Attendance{% endblock %}
+
+{% block content %}
+<h2>📅 Mark Attendance</h2>
+
+{% if message %}
+    <p style="color: green;">{{ message }}</p>
+{% endif %}
+
+{% if today_attendance %}
+    <p>You have already marked your attendance as: <strong>{{ today_attendance.status }}</strong></p>
+{% else %}
+    <form method="POST">
+        {% csrf_token %}
+        <label><input type="radio" name="status" value="Present" required> Present</label><br>
+        <label><input type="radio" name="status" value="Absent" required> Absent</label><br><br>
+        <button type="submit">Mark Attendance</button>
+    </form>
+{% endif %}
+
+{% endblock %}

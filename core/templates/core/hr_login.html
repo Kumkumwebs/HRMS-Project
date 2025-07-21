@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+{% block title %}HR Login{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid hrlogin-page-style">
+    <div class="bg-dark bg-opacity-75 text-white px-5 py-3 rounded shadow-lg hrlogin-bg-shadow">
+        <div class="text-center border-bottom border-warning mb-3">
+            <h2 class="pb-2">👩‍💼 HR LOGIN</h2>
+        </div>
+        <form class="" method="post">
+            {% csrf_token %}
+            <div class="login-name">
+                <div class="login-label"> <label>Username</label></div>
+                <div class=""> <input type="text" name="username" placeholder="Username" required></div>
+            </div>
+            <div class="">
+                <div class="login-label"> <label>Password</label></div>
+                <div class=""><input type="password" name="password" placeholder="Password" required></div>
+            </div>
+
+            <div class="text-end">
+                <button class="rounded-pill px-4" type="submit">Login</button>
+            </div>
+        </form>
+
+        {% if message %}
+        <div class="text-center pt-4">
+            <h5 style="color:red; font-size: 17px;">{{ message }}</h5>
+        </div>
+
+        
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0%;
+        z-index: 99;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "core/base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+{% if profile %}
+    <!-- <p><strong>Username:</strong> {{ profile.user.username }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Designation:</strong> {{ profile.designation }}</p>
+    <p><strong>Department:</strong> {{ profile.department }}</p>
+    <p><strong>Joining Date:</strong> {{ profile.joining_date }}</p> -->
+
+
+    <div class="container-fluid">
+        <div class="row py-4">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="border border-2 h-100 text-center p-3">
+                    <img class="w-50"
+                        src="https://assets.codepen.io/495197/undraw_Newsletter_re_wrob.svg"
+                        alt="">
+                    <h2>Name: {{ user.username }}</h2>
+                    <p>You are logged in as {{ user.groups.all.0.name }}</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <div class="border border-2 p-3">
+                    <div class="text-center border-bottom border-2 border-warning">
+                        <h2>Profile Information</h2>
+                    </div>
+    
+                    <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Name:</h5>
+                        </div>
+                        <div class="">{{ user.username }}</div>
+                    </div>
+                    <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Email Address:</h5>
+                        </div>
+                        <div class="">{{ profile.user.email }}</div>
+                    </div>
+                    <!-- <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Contact Number:</h5>
+                        </div>
+                        <div class="">+91 1234567890</div>
+                    </div> -->
+                    
+                    <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Joining Date:</h5>
+                        </div>
+                        <div class="">{{ profile.joining_date }}</div>
+                    </div>
+                    <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Designation:</h5>
+                        </div>
+                        <div class="">{{ profile.designation }}</div>
+                    </div>
+                    <!-- <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Address:</h5>
+                        </div>
+                        <div class="">Lucknow India 206021</div>
+                    </div> -->
+                    <div class="py-2 d-flex gap-3">
+                        <div class="profile-name">
+                            <h5>Department:</h5>
+                        </div>
+                        <div class="">{{ profile.department }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% else %}
+    <p>No profile data available. Contact HR.</p>
+{% endif %}
+
+{% endblock %}
